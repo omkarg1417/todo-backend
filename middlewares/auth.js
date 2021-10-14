@@ -47,7 +47,8 @@ const isMyTodo = async (req, res, next) => {
             }
         });
 
-        if(typeof user !== undefined && user.id == userId) {
+        console.log(user);
+        if(user !== undefined && user.id == userId) {
             next();
         } else{
             res.status(404).send("Todo not found");
