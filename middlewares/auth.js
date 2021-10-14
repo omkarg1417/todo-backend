@@ -7,7 +7,7 @@ const {SECRET} = require('../config/index');
 const isLoggedIn = (req, res, next) => {
     const bearerHeader = req.headers["authorization"];
     
-    if(typeof bearerHeader !== undefined) {
+    if(bearerHeader !== undefined) {
         const bearerToken = bearerHeader.split(" ")[1];
         req.token = bearerToken;
         next();
