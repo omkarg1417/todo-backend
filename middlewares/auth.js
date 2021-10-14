@@ -19,12 +19,12 @@ const isLoggedIn = (req, res, next) => {
 
 const isVerified = (req, res, next) => {
     const bearerHeader = req.headers["authorization"];
-    const bearerToken = bearerHeader.split(" ")[1];
-
-    const decoded = jwt.verify(bearerToken, SECRET);
-    const id = decoded["id"];
-
-    if(id) {
+    
+    
+    if(typeof bearerHeader !== undefined) {
+        const bearerToken = bearerHeader.split(" ")[1];
+        const decoded = jwt.verify(bearerToken, SECRET);
+        const id = decoded["id"];
         req.userId = id;
         next();
     }
