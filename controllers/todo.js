@@ -71,7 +71,7 @@ const getThatTodo = async (req, res) => {
     try{
         const todo = await Todo.findOne({where:{id}});
 
-        if(!todo) {
+        if(todo===undefined) {
             res.status(404).json({
                 message: "Todo doesn't exist"
             })
